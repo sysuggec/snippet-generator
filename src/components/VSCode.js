@@ -8,6 +8,8 @@ const renderSnippet = (snippet, tabtrigger, description) => {
   const separatedSnippet = snippet
     .replace(/\\/g, "\\\\")
     .replace(/"/g, '\\"')
+    .replace(/\t/g, "\\t")
+    .replace(/\$([a-zA-Z_]{1,}[a-zA-Z0-9]*|[{]{1,}[a-zA-Z_]{1,}[a-zA-Z0-9]*)/g, function(mt){ if('$TM_FILENAME_BASE'==mt){return mt}else{ return "\\"+mt}})
     .split("\n");
   const separatedSnippetLength = separatedSnippet.length;
 
